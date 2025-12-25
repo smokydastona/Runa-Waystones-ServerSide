@@ -14,7 +14,7 @@ public final class VaultService {
     }
 
     public static void openVault(ServerPlayer player) {
-        player.getCapability(VaultCapability.VAULT).ifPresentOrElse(vault -> {
+        player.getCapability(VaultCapability.VAULT).resolve().ifPresentOrElse(vault -> {
             ServerIconService.sendServerIconIfPresent(player);
 
             VaultContainer container = new VaultContainer(vault);
@@ -30,7 +30,7 @@ public final class VaultService {
     }
 
     public static boolean clearVault(ServerPlayer player) {
-        return player.getCapability(VaultCapability.VAULT).map(vault -> {
+        return player.getCapability(VaultCapability.VAULT).resolve().map(vault -> {
             for (int i = 0; i < VaultData.SIZE; i++) {
                 vault.items().setStackInSlot(i, net.minecraft.world.item.ItemStack.EMPTY);
             }

@@ -1,6 +1,7 @@
 package com.example.waystoneinjectorserver.vault;
 
 import com.example.waystoneinjectorserver.WaystoneInjectorServerMod;
+import com.example.waystoneinjectorserver.server.ServerIconService;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.MenuProvider;
@@ -14,6 +15,8 @@ public final class VaultService {
 
     public static void openVault(ServerPlayer player) {
         player.getCapability(VaultCapability.VAULT).ifPresentOrElse(vault -> {
+            ServerIconService.sendServerIconIfPresent(player);
+
             VaultContainer container = new VaultContainer(vault);
 
             MenuProvider provider = new SimpleMenuProvider(

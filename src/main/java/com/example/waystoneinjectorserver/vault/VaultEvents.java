@@ -1,10 +1,12 @@
 package com.example.waystoneinjectorserver.vault;
 
 import com.example.waystoneinjectorserver.WaystoneInjectorServerMod;
+import com.example.waystoneinjectorserver.server.ServerIconService;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -39,6 +41,13 @@ public class VaultEvents {
             VaultData to = cloneVault.orElseThrow(IllegalStateException::new);
             CompoundTag tag = from.serializeNBT();
             to.deserializeNBT(tag);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerLogin(PlayerLoggedInEvent event) {
+        if (event.getEntity() instanceof net.minecraft.server.level.ServerPlayer sp) {
+            ServerIconService.sendServerIconIfPresent(sp);
         }
     }
 }

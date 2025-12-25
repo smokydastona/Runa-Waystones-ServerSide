@@ -27,5 +27,11 @@ public final class NetworkHandler {
             .decoder(OpenVaultC2SPacket::decode)
             .consumerMainThread(OpenVaultC2SPacket::handle)
             .add();
+
+        CHANNEL.messageBuilder(ServerIconS2CPacket.class, nextId++)
+            .encoder(ServerIconS2CPacket::encode)
+            .decoder(ServerIconS2CPacket::decode)
+            .consumerMainThread(ServerIconS2CPacket::handle)
+            .add();
     }
 }

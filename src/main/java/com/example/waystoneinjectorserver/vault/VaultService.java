@@ -21,7 +21,7 @@ public final class VaultService {
 
             MenuProvider provider = new SimpleMenuProvider(
                 (containerId, inv, p) -> ChestMenu.sixRows(containerId, inv, container),
-                Component.literal("Vault")
+                Component.literal("Void Closet")
             );
 
             WaystoneInjectorServerMod.LOGGER.info("Opening vault for {}", player.getGameProfile().getName());

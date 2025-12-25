@@ -5,15 +5,13 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import net.minecraftforge.common.util.LazyOptional;
 
-import org.jetbrains.annotations.Nullable;
-
 public class VaultProvider implements ICapabilitySerializable<CompoundTag> {
 
     private final VaultData data = new VaultData();
     private final LazyOptional<VaultData> optional = LazyOptional.of(() -> data);
 
     @Override
-    public <T> LazyOptional<T> getCapability(net.minecraftforge.common.capabilities.Capability<T> cap, @Nullable Direction side) {
+    public <T> LazyOptional<T> getCapability(net.minecraftforge.common.capabilities.Capability<T> cap, Direction side) {
         if (cap == VaultCapability.VAULT) {
             return optional.cast();
         }

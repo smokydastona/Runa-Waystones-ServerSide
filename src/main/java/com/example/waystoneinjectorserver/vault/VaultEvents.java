@@ -19,7 +19,7 @@ public class VaultEvents {
     @SubscribeEvent
     public static void onAttachCapabilities(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof Player) {
-            event.addCapability(VAULT_ID, new VaultProvider());
+            event.addCapability(VAULT_ID, new VaultProvider((Player) event.getObject()));
         }
     }
 
@@ -41,6 +41,9 @@ public class VaultEvents {
             VaultData to = cloneVault.orElseThrow(IllegalStateException::new);
             CompoundTag tag = from.serializeNBT();
             to.deserializeNBT(tag);
+
+            // If PlayerSync is installed, keep the persistent copy in sync as well.
+            VaultPersistentStorage.saveToPlayer(clone, to);
         }
     }
 

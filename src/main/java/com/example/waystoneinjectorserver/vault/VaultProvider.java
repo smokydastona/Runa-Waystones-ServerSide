@@ -2,13 +2,19 @@ package com.example.waystoneinjectorserver.vault;
 
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import net.minecraftforge.common.util.LazyOptional;
 
 public class VaultProvider implements ICapabilitySerializable<CompoundTag> {
 
-    private final VaultData data = new VaultData();
+    private final VaultData data;
     private final LazyOptional<VaultData> optional = LazyOptional.of(() -> data);
+
+    public VaultProvider(Player owner) {
+        this.data = new VaultData(owner);
+        VaultPersistentStorage.loadFromPlayer(owner, this.data);
+    }
 
     @Override
     public <T> LazyOptional<T> getCapability(net.minecraftforge.common.capabilities.Capability<T> cap, Direction side) {

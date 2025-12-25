@@ -13,6 +13,7 @@ import java.util.List;
 
 public class VaultCommands {
 
+    @SuppressWarnings("null")
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(
             Commands.literal("vault")
@@ -50,6 +51,7 @@ public class VaultCommands {
         );
     }
 
+    @SuppressWarnings("null")
     private static boolean canOpenVault(ServerPlayer player) {
         if (!ServerConfig.VAULT_ALLOW_SPECTATOR.get() && player.isSpectator()) {
             player.sendSystemMessage(Component.literal("You can't open the vault in spectator mode."));

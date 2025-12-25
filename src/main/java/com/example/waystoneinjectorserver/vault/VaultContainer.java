@@ -1,5 +1,6 @@
 package com.example.waystoneinjectorserver.vault;
 
+import javax.annotation.Nonnull;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -60,7 +61,7 @@ public class VaultContainer implements Container {
     }
 
     @Override
-    public void setItem(int slot, ItemStack stack) {
+    public void setItem(int slot, @Nonnull ItemStack stack) {
         data.items().setStackInSlot(slot, stack);
         setChanged();
     }
@@ -71,7 +72,7 @@ public class VaultContainer implements Container {
     }
 
     @Override
-    public boolean stillValid(Player player) {
+    public boolean stillValid(@Nonnull Player player) {
         return true;
     }
 

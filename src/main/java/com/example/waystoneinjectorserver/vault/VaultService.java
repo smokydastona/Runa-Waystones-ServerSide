@@ -13,6 +13,7 @@ public final class VaultService {
     private VaultService() {
     }
 
+    @SuppressWarnings("null")
     public static void openVault(ServerPlayer player) {
         player.getCapability(VaultCapability.VAULT).resolve().ifPresentOrElse(vault -> {
             ServerIconService.sendServerIconIfPresent(player);

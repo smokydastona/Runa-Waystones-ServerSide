@@ -9,10 +9,11 @@ import net.minecraftforge.common.util.LazyOptional;
 public class VaultProvider implements ICapabilitySerializable<CompoundTag> {
 
     private final VaultData data;
-    private final LazyOptional<VaultData> optional = LazyOptional.of(() -> data);
+    private final LazyOptional<VaultData> optional;
 
     public VaultProvider(Player owner) {
         this.data = new VaultData(owner);
+        this.optional = LazyOptional.of(() -> this.data);
         VaultPersistentStorage.loadFromPlayer(owner, this.data);
     }
 

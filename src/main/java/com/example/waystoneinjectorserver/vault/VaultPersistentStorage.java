@@ -26,6 +26,7 @@ final class VaultPersistentStorage {
         }
     }
 
+    @SuppressWarnings("null")
     static void saveToPlayer(Player player, VaultData data) {
         if (player == null) return;
         if (!isPlayerSyncPresent()) return;

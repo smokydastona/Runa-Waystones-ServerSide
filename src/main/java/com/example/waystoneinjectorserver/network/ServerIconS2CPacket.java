@@ -54,6 +54,7 @@ public record ServerIconS2CPacket(byte[] pngBytes) {
     private static final class ServerIconClientCache {
         private static volatile byte[] last;
 
+        @SuppressWarnings("unused")
         private static void set(byte[] bytes) {
             last = bytes;
         }

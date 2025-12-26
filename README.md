@@ -1,6 +1,6 @@
-# Waystone Injector — Server Mod (Minecraft Forge 1.20.1)
+# Runa Waystones — Server Mod (Minecraft Forge 1.20.1)
 
-This is the **server-side companion** to the Waystone Injector client mod.
+This is the **server-side companion** to the **Runa Waystones** client mod.
 
 It provides **Ze Voidrobe**: a per-player, 54-slot personal storage that opens as a vanilla 6-row chest menu.
 
@@ -9,7 +9,7 @@ It provides **Ze Voidrobe**: a per-player, 54-slot personal storage that opens a
 - Minecraft **1.20.1**
 - Forge **1.20.1**
 
-Client mod is optional:
+The client mod is optional:
 - **With the client mod**: players get a convenient UI button to open Ze Voidrobe.
 - **Without the client mod**: players can still use commands (below).
 
